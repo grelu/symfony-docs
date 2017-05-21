@@ -347,8 +347,7 @@ made. To do that, you create a new class::
         {
             $happyMessage = $this->messageGenerator->getHappyMessage();
 
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Site update just happened!')
+            $message = new \Swift_Message('Site update just happened!')
                 ->setFrom('admin@example.com')
                 ->setTo('manager@example.com')
                 ->addPart(
@@ -408,7 +407,7 @@ example, suppose you want to make the admin email configurable:
         {
             // ...
 
-            $message = \Swift_Message::newInstance()
+            $message = new \Swift_Message('Subject...')
                 // ...
     -            ->setTo('manager@example.com')
     +            ->setTo($this->adminEmail)
